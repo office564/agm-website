@@ -1662,3 +1662,68 @@ ul {
     }
 
 }
+
+/* =========================
+   SIMPLE CAPTCHA
+========================= */
+
+.simple-captcha {
+    margin: 20px 0;
+}
+
+.simple-captcha label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #172235;
+    margin-bottom: 5px;
+}
+
+.simple-captcha p {
+    font-size: 12px;
+    color: #687786;
+    margin-bottom: 8px;
+}
+
+.captcha-code {
+    display: inline-block;
+    padding: 10px 18px;
+    margin-bottom: 10px;
+
+    background: #f1f6fa;
+    border: 1px solid #d5e0e7;
+
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 5px;
+
+    user-select: none;
+}
+
+#captchaInput {
+    display: block;
+
+    width: 100%;
+    max-width: 300px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #d5e0e7;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+#captchaInput:focus {
+    border-color: #0875b7;
+}
+
+#captchaMessage {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 12px;
+    font-weight: 600;
+}

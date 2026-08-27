@@ -21,11 +21,7 @@
 
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<script
-    src="https://js.hcaptcha.com/1/api.js"
-    async
-    defer>
-</script>
+
 
 </head>
 
@@ -454,12 +450,31 @@
                     tabindex="-1"
                     autocomplete="off"
                 >
-                 <!-- HCAPTCHA -->
+                 <!-- SIMPLE CAPTCHA -->
 
-                    <div
-                  class="h-captcha"
-                  data-sitekey="dac4efaa-660a-4aaa-b2bc-11d02ac0a2bc">
-            </div>
+<div class="simple-captcha">
+
+    <label for="captchaInput">
+        Security Check
+    </label>
+
+    <p>
+        Enter the characters shown:
+    </p>
+
+    <div class="captcha-code" id="captchaCode"></div>
+
+    <input
+        type="text"
+        id="captchaInput"
+        placeholder="Enter CAPTCHA"
+        autocomplete="off"
+        maxlength="5"
+    >
+
+    <span id="captchaMessage"></span>
+
+</div>
 
              <!-- SUBMIT -->
 
@@ -522,6 +537,67 @@
 
 </footer>
 
+
+<script>
+
+    const captchaCode = document.getElementById("captchaCode");
+    const captchaInput = document.getElementById("captchaInput");
+    const captchaMessage = document.getElementById("captchaMessage");
+    const form = document.querySelector("form");
+
+    function generateCaptcha() {
+
+        const characters =
+            "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+        let captcha = "";
+
+        for (let i = 0; i < 5; i++) {
+            captcha += characters.charAt(
+                Math.floor(Math.random() * characters.length)
+            );
+        }
+
+        captchaCode.textContent = captcha;
+
+    }
+
+    generateCaptcha();
+
+    form.addEventListener("submit", function(event) {
+
+        const entered =
+            captchaInput.value.trim().toUpperCase();
+
+        const correct =
+            captchaCode.textContent;
+
+        if (entered !== correct) {
+
+            event.preventDefault();
+
+            captchaMessage.textContent =
+                "Incorrect CAPTCHA. Please try again.";
+
+            captchaMessage.style.color = "#d32f2f";
+
+            captchaInput.focus();
+
+            generateCaptcha();
+
+            captchaInput.value = "";
+
+            return;
+        }
+
+        captchaMessage.textContent =
+            "✓ Verification successful";
+
+        captchaMessage.style.color = "#198754";
+
+    });
+
+</script>
 
 </body>
 
