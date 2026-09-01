@@ -326,7 +326,7 @@ ul {
             rgba(5, 36, 65, 0.85) 48%,
             rgba(5, 36, 65, 0.35) 100%
         ),
-        url("images/hero-machine.png") center/cover no-repeat;
+        url("image/damper-endurance.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
     color: white;
